@@ -2,7 +2,7 @@ from flask import Flask, request, redirect
 import os
 app = Flask(__name__)
 
-DATEFILE = './board-data.txt'
+DATAFILE = './board-data.txt'
 
 @app.route('/')
 def index():
