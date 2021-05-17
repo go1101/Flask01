@@ -10,7 +10,7 @@ def index():
     if os.path.exists(DATAFILE):
         with open(DATAFILE, 'rt') as f:
             msg = f.read()
-        return """"
+        return """
 <html><body>
 <h1>メッセージボード</h1>
 <div style="background-color:yellow;padding:3em;">
@@ -33,5 +33,5 @@ def write():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
 
