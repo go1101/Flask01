@@ -1,4 +1,6 @@
-# flaskをインポート
+# Flaskをインポート
+# request、入力した内容を受け取る
+
 from flask import Flask, request, redirect
 import os
 app = Flask(__name__)
@@ -11,6 +13,7 @@ def index():
     if os.path.exists(DATAFILE):
         with open(DATAFILE, 'rt') as f:
             msg = f.read()
+            # ダブルコーテーション3つで直下のHTMLの内容を表示する
         return """
 <html><body>
 <h1>メッセージボード</h1>
@@ -34,5 +37,6 @@ def write():
     return redirect('/')
 
 if __name__ == '__main__':
+    # デバッグモードで実行、ソースコード更新で自動リロード
     app.run(debug=True)
 
