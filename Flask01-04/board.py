@@ -5,15 +5,18 @@ from flask import Flask, request, redirect
 import os
 app = Flask(__name__)
 
+# データ保存先のテキストを指定、入力した内容が下記のテキストに保存される
 DATAFILE = './board-data.txt'
 
 @app.route('/')
 def index():
     msg = 'まだ書き込みはありません。'
+    # テキストの内容を確認する、文章があれば、変数msgを上書きする
     if os.path.exists(DATAFILE):
         with open(DATAFILE, 'rt') as f:
             msg = f.read()
             # ダブルコーテーション3つで直下のHTMLの内容を表示する
+            # POSTメソッドで入力した内容を書き込む
         return """
 <html><body>
 <h1>メッセージボード</h1>
@@ -28,6 +31,7 @@ def index():
 </body></html>
 """.format(msg)
 
+#POSTメソットにより受け取っと入力結果を、'/'にリダイレクトする
 @app.route('/write' ,methods=['POST'])
 def write():
     if 'msg' in request.form:
