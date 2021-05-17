@@ -1,3 +1,4 @@
+# flaskをインポート
 from flask import Flask, request, redirect
 import os
 app = Flask(__name__)
@@ -20,7 +21,7 @@ def index():
     <textarea name="msg"
     rows="6" cols="60"></textarea><br/>
     <input type="submit" value=" 書込 ">
-<_form>
+</form>
 </body></html>
 """.format(msg)
 
