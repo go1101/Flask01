@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン</title>
+</head>
+<body>
+    <h2>ユーザーIDとパスワードを入力して下さい。</h2>
+        <form method="POST" action="/logincheck">
+            <!-- placeholderにより入力補助を指定、nameにより名前を指定 -->
+            <input placeholder="ユーザーID" type="text" name="user_id">
+            <input placeholder="パスワード" type="password" name="password">
+            <input type="submit" value="送信">
+                    
+        </form>
+</body>
+</html>
