@@ -1,0 +1,4 @@
+北海道,札幌市,http://www.pref.hokkaido.lg.jp/
+青森県,青森市,https://www.pref.aomori.lg.jp/
+岩手県,盛岡市,https://www.pref.iwate.jp/
+宮城県,仙台市,https://www.pref.miyagi.jp/
