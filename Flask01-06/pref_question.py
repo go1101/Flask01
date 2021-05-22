@@ -16,7 +16,7 @@ def pref_location():
                 pref_city_dict[pref] = city
             
             if url not in pref_url_dict:
-                pref_url_dict[url] = url
+                pref_url_dict[pref] = url
     pref_name = []
     for i in pref_city_dict.keys():
         pref_name.append(i)
