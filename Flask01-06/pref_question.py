@@ -30,8 +30,7 @@ def pref_location():
 
 if __name__ == '__main__':
     p, c, u = pref_location()
-
-    pring(p, c, u)
+    print(p, c, u)
 
 
     
