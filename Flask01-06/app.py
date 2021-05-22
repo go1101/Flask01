@@ -13,7 +13,7 @@ id_pwd = {'lelouch':'vermillion'}
 
 @app.route('/')
 def index():
-    return "hell world"
+    return render_template('index.html')
 
 @app.route('/login')
 def login():
