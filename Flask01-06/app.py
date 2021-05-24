@@ -13,7 +13,10 @@ id_pwd = {'lelouch':'vermillion'}
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if not session.get('login'):
+        return redirect(url_for('login'))
+    else:
+        return render_template('index.html')
 
 @app.route('/login')
 def login():
