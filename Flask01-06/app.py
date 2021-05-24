@@ -1,5 +1,7 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 import os
+from pref_question import pref_location
+
 
 # インスタンスの作成
 app = Flask(__name__)
@@ -44,6 +46,14 @@ def logincheck():
 
 
 
+@app.route('/pref_quiz', methods=['POST'])
+def pref_quiz():
+    random_pref, city_name, pref_url = pref_location()
+    session['prefecture'] = random_pref
+    session['city'] = city_name
+    session['url'] = pref_url
+    return render_template('quiz.html',prefecture=random_pref)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
