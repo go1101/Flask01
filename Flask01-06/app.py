@@ -55,6 +55,19 @@ def pref_quiz():
     return render_template('quiz.html',prefecture=random_pref)
     
 
+@app.route('/answercheck', methods=['POST'])
+def answercheck():
+    user_answer = request.form['city']
+    prefecture = session.get('prefecture')
+    city = session.get('city')
+    url = session.get('url')
+
+    if user_anser == city:
+        result = '正解'
+    else:
+        result = '不正解'
+    return render_template('result.html', result=result, prefecture=prefecture, city=city, url=url)
+
 if __name__ == '__main__':
     app.run(debug=True)
 
