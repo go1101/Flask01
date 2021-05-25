@@ -62,7 +62,7 @@ def answercheck():
     city = session.get('city')
     url = session.get('url')
 
-    if user_anser == city:
+    if user_answer == city:
         result = '正解'
     else:
         result = '不正解'
