@@ -1,16 +1,17 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 import os
+# pref_question.pyファイルよりpref_location関数をインポートする
 from pref_question import pref_location
-
 
 # インスタンスの作成
 app = Flask(__name__)
 
-# 暗号鍵の作成
+# セッション情報を暗号化するために、暗号鍵を作成する
+# urandom()関数により10桁の乱数を生成する
 key = os.urandom(10)
 app.secret_key = key
 
-# ユーザIDとパスワードを辞書型で作成
+# ユーザID[lelouch]とパスワード[vermillion]を辞書型で作成
 id_pwd = {'lelouch':'vermillion'}
 
 @app.route('/')
