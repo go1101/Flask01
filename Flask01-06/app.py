@@ -30,6 +30,7 @@ def login():
 def logincheck():
     user_id = request.form['user_id']
     password = request.form['password']
+    # 取得したユーザIDとパスワードが[id_pwd]に含まれるかをifで判断する
 
     if user_id in id_pwd:
         if password == id_pwd[user_id]:
@@ -46,9 +47,12 @@ def logincheck():
         return redirect(url_for('login'))
 
 
-
+# [index.html]のformより[/pref_quiz]へアクセスした時の動作
 @app.route('/pref_quiz', methods=['POST'])
 def pref_quiz():
+    # [pref_question.py]のpref_location()関数を実行
+    # pref_location()関数の戻り値を各変数に代入
+    # 各変数をセッションごとの変数に代入
     random_pref, city_name, pref_url = pref_location()
     session['prefecture'] = random_pref
     session['city'] = city_name
