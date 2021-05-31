@@ -1,7 +1,10 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 import os
+
 # pref_question.pyファイルよりpref_location関数をインポートする
 from pref_question import pref_location
+
+from wiki import wiki
 
 # インスタンスの作成
 app = Flask(__name__)
@@ -72,6 +75,11 @@ def answercheck():
     else:
         result = '不正解'
     return render_template('result.html', result=result, prefecture=prefecture, city=city, url=url)
+
+@app.route('/wikipedia', methods=['POST'])
+def wikipedia():
+    return render_template('wiki_result.html', result='')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
