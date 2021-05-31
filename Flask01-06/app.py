@@ -1,5 +1,6 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 import os
+import wikipedia
 
 # pref_question.pyファイルよりpref_location関数をインポートする
 from pref_question import pref_location
