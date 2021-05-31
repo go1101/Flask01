@@ -3,7 +3,6 @@ import os
 
 # pref_question.pyファイルよりpref_location関数をインポートする
 from pref_question import pref_location
-
 from wiki import wiki
 
 # インスタンスの作成
@@ -80,6 +79,15 @@ def answercheck():
 def wikipedia():
     return render_template('wiki_result.html', result='')
 
+@app.route('/wiki_answer', methods=['POST'])
+def wiki_answer():
+    word = request.form['word']
+    if word == '':
+        result = '該当結果がありません。'
+    else:
+        result = wiki(word)
+    
+    return render_template('wiki_result.html', result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)
