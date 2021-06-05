@@ -21,6 +21,6 @@ def index():
     response.set_cookie('cnt', value=str(cnt), max_age=max_age, expires=expires)
     return response
 
-    if __name__ == '__main__':
-        # デバッグモードで実行、ソースコード更新で自動リロード
-        app.run(debug=True)
+if __name__ == '__main__':
+    # デバッグモードで実行、ソースコード更新で自動リロード
+    app.run(debug=True)
