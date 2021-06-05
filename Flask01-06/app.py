@@ -80,6 +80,7 @@ def answercheck():
 def wikipedia():
     return render_template('wiki_result.html', result='検索文字を入力下さい')
 
+# [wiki_result.html]より入力した情報を引数として[wiki_result.html]へ渡す
 @app.route('/wiki_answer', methods=['POST'])
 def wiki_answer():
     word = request.form['word']
