@@ -78,13 +78,13 @@ def answercheck():
 
 @app.route('/wikipedia', methods=['POST'])
 def wikipedia():
-    return render_template('wiki_result.html', result='')
+    return render_template('wiki_result.html', result='検索文字を入力下さい')
 
 @app.route('/wiki_answer', methods=['POST'])
 def wiki_answer():
     word = request.form['word']
     if word == '':
-        result = '該当結果がありません。'
+        result = '検索情報を入力して下さい。'
     else:
         result = wiki(word)
     
