@@ -6,6 +6,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    # HTTPリクエストよりクッキーの部分を抽出する
+    # クッキーが無ければ'0'で初期化し、アクセスごとに加算する
     cnt_s = request.cookies.get('cnt')
     if cnt_s is None:
         cnt = 0
