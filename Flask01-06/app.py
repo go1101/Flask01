@@ -28,6 +28,10 @@ def index():
 def login():
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    return render_template('login.html')
+
 # ログイン認証、POSTメソッドにより情報を受取る
 @app.route('/logincheck', methods=['POST'])
 def logincheck():
