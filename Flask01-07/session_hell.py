@@ -10,7 +10,7 @@ def index():
     <html><body><h1>ユーザー名</h1>
     <form action="/setname" method="GET">
         名前：<input type="text" name="username">
-        <button tyep="submit" value="開始">
+        <input type='submit' value='開始'>
     </form></body></html>
     """
 
