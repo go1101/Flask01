@@ -9,8 +9,8 @@ def index():
     return """
     <html><body><h1>ユーザー名</h1>
     <form action="/setname" method="GET">
-        名前:<input type="text" name="username">
-        <input tyep="submit" value="開始">
+        名前：<input type="text" name="username">
+        <button tyep="submit" value="開始">
     </form></body></html>
     """
 
@@ -58,10 +58,9 @@ def morning():
     <h1>{0}さん、こんばんは。</h1>{1}
     """.format(name ,getLinks())
 
-if __name__ == '__main':
-    app.run(host='0.0.0.0')
 
 
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
-    
