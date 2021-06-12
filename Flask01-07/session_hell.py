@@ -1,6 +1,6 @@
 from flask import Flask, request, session, redirect
 app = Flask(__name__)
-app.secret_key = '9KStWezC'
+app.secret_key = 'hogehoge'
 
 @app.route('/')
 def index():
@@ -48,7 +48,7 @@ def hello():
     <h1>{0}さん、こんにちは。</h1>{1}
     """.format(name ,getLinks())
 
-app.route('/night')
+@app.route('/night')
 def night():
     if not ('name' in session):
         return redirect('/')
