@@ -1,7 +1,7 @@
 from flask import Flask, request, session, redirect
 app = Flask(__name__)
 
-app.secret_key = 'hogehoge'
+app.secret_key = '9KStWezC'
 
 @app.route('/')
 def index():
