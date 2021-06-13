@@ -43,5 +43,20 @@ def check_login():
     # ログイン情報が正しければ非公開ページへ
     return redirect('private')
 
+@app.route('/private')
+def private_page():
+    # ログインしていなければトップに戻す（is_login関数は後半で定義）
+    if not is_login():
+        return """
+        <h1>ログインして下さい。</h1>
+        <p><a href="/">ログインする</a></p>
+        """
+    
+    return """
+    <h1>非公開ページです。</h1>
+    <p>ログイン中です。</p>
+    <p><a href="/logout">ログアウト</a></p>
+    """
+
 
 
