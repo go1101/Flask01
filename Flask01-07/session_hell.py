@@ -1,10 +1,11 @@
 from flask import Flask, request, session, redirect
 app = Flask(__name__)
+# セッション情報を暗号化するためのキー、任意の文字列で問題無い
 app.secret_key = 'hogehoge'
 
 @app.route('/')
 def index():
-    # 入力フォーム
+    # 入力フォーム、GETメソッドで[username]を取得する
     return """
     <html><body><h1>ユーザー名</h1>
     <form action="/setname" method="GET">
@@ -13,6 +14,7 @@ def index():
     </form></body></html>
     """
 
+# 入力フォームから取得した[username]をもとに処理、未入力の場合はトップページにリダイレクト
 @app.route('/setname')
 def setname():
     name = request.args.get('username')
