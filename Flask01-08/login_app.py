@@ -38,7 +38,7 @@ def check_login():
     if try_login(user, pw) == False:
         return """
         <h1>ユーザー名かパスワードに誤りがあります。</h1>
-        <p><a href"/">戻る</a></p>
+        <p><a href="/">戻る</a></p>
         """
     # ログイン情報が正しければ非公開ページへ
     return redirect('private')
@@ -60,7 +60,7 @@ def private_page():
 
 @app.route('/logout')
 def logout_page():
-    try_login()
+    try_logout()
     return """
     <h1>ログアウトしました。</h1>
     <p><a href="/">戻る</a></p>
@@ -78,7 +78,7 @@ def try_login(user, password):
     if USERLIST[user] != password:
         return False
     session['login'] = user
-    return Trun
+    return True
 
 def try_logout():
     session.pop('login', None)
