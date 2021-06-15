@@ -21,7 +21,7 @@ def index():
     <p><a href="/private">秘密鍵</a></p>
     """
 
-@app.route('/check_login' method=['POST'])
+@app.route('/check_login', methods=['POST'])
 def check_login():
     # 空文字で初期化
     user, pw = (None, None)
@@ -57,6 +57,35 @@ def private_page():
     <p>ログイン中です。</p>
     <p><a href="/logout">ログアウト</a></p>
     """
+
+@app.route('/logout')
+def logout_page():
+    try_login()
+    return """
+    <h1>ログアウトしました。</h1>
+    <p><a href="/">戻る</a></p>
+    """
+
+
+def is_login():
+    if 'login' in session:
+        return True
+    return False
+
+def try_login(user, password):
+    if not user in USERLIST:
+        return False
+    if USERLIST[user] != password:
+        return False
+    session['login'] = user
+    return Trun
+
+def try_logout():
+    session.pop('login', None)
+    return True
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 
