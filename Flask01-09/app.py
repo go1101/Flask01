@@ -17,7 +17,7 @@ def index_page():
     </body></html>
     """
 
-@app.route('upload')
+@app.route('/upload', methods=['POST'])
 def upload():
     if not (upfile in request.files):
         return redirect('/')
@@ -48,7 +48,9 @@ file: {1}</p>
 def is_jgegfile(fp):
     byte = fp.read(2)
     fp.seek(0)
-    return byte[:2] == b'¥xFF¥xD8'
+    # '\'は[option]+[¥]で入力
+    return byte[:2] == b'\xFF\xD8'
+    return byte[:2] == b'\xFF\xD8'
 
 if __name__ == '__main__':
     app.run(debug=True)
