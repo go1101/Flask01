@@ -19,7 +19,7 @@ def index_page():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    if not (upfile in request.files):
+    if not ('upfile' in request.files):
         return redirect('/')
     temp_file = request.files['upfile']
     if temp_file.filename == '':
@@ -45,7 +45,7 @@ file: {1}</p>
     <img src="{0}" width="400">
     """.format(image_url, image_path)
 
-def is_jgegfile(fp):
+def is_jpegfile(fp):
     byte = fp.read(2)
     fp.seek(0)
     # '\'は[option]+[¥]で入力
