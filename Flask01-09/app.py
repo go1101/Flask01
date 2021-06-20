@@ -31,5 +31,28 @@ def upload():
     temp_file.save(IMAGES_DIR + '/' + fname)
     return redirect('/photo/' + fname)
 
+@app.route('/photo/<fname>')
+def photo_page(fname):
+    if fname is None: return redirect('/')
+    image_path = IMAGES_DIR + '/' + fname
+    image_url = IMAGES_URL + '/' + fname
+    if not os.path.exists(image_path):
+        return '<h1>画像がありません。</h1>'
+    return """
+    <h1>画像がアップロードされています。</h1>
+    <p>URL: {0}<br>
+file: {1}</p>
+    <img src="{0}" width="400">
+    """.format(image_url, image_path)
+
+def is_jgegfile(fp):
+    byte = fp.read(2)
+    fp.seek(0)
+    return byte[:2] == b'¥xFF¥xD8'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
 
 
