@@ -2,6 +2,7 @@ from flask import Flask, request, session, redirect
 app = Flask(__name__)
 app.secret_key = 'hogehoge'
 
+# 辞書型の変数を定義、keyとvalueを定義
 USERLIST = {
     'username01': 'password01',
     'username02': 'password02',
@@ -25,7 +26,7 @@ def index():
 def check_login():
     # 空文字で初期化
     user, pw = (None, None)
-    # フォームの値を代入
+    # フォームの値を代入、form内で定義した[user]と[pw]を代入する
     if 'user' in request.form:
         user = request.form['user']
     if 'pw' in request.form:
@@ -73,8 +74,10 @@ def is_login():
     return False
 
 def try_login(user, password):
+    # 辞書型の変数[USERLIST]のkeyに引数の[user]を含まれる(一致する)か確認
     if not user in USERLIST:
         return False
+    # 引数の[user]が一致したvalueと引数の[password]が一致するか確認
     if USERLIST[user] != password:
         return False
     session['login'] = user
