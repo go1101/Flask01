@@ -19,6 +19,7 @@ def index():
 def setname():
     name = request.args.get('username')
     if not name: return redirect('/')
+    # セッションにフォームで入力された[username]を代入する
     session['name'] = name
     return redirect('/morning')
 
@@ -33,8 +34,11 @@ def getLinks():
 
 @app.route('/morning')
 def morning():
+    # セッション情報(session['name'])が存在しなければホーム画面へリダイレクト
     if not ('name' in session):
         return redirect('/')
+    # セッション情報を変数[name]に代入
+    # 上記で定義している[getLinks]関数を実行する
     name = session['name']
     return """
     <h1>{0}さん、おはようございます。</h1>{1}
