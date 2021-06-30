@@ -2,9 +2,9 @@ from flask import session, redirect
 
 # 辞書型の変数[USERLIST]を定義
 USERLIST = {
-    'test01': 'TEST01'
-    'test02': 'TEST02'
-    'test03': 'TEST03'
+    'test01': 'TEST01',
+    'test02': 'TEST02',
+    'test03': 'TEST03',
 }
 
 def is_login():

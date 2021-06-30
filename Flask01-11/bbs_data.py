@@ -1,7 +1,7 @@
 import os, json, datetime
 
 # [os.path.dirname(__file__)]でファイルのパスを取得する
-BASE_DIR = os.path.dirname(__file__):
+BASE_DIR = os.path.dirname(__file__)
 SAVE_FILE = BASE_DIR + '/data/log.json'
 
 def load_data():
@@ -17,7 +17,7 @@ def save_data(data_list):
     with open(SAVE_FILE, 'wt', encoding='utf-8') as f:
         json.dump(data_list, f)
 
-def save_data_append(user. text):
+def save_data_append(user, text):
     tm = get_datetime_now()
     data = {'name': user, 'text': text, 'date': tm}
 
@@ -28,5 +28,5 @@ def save_data_append(user. text):
 def get_datetime_now():
     now = datetime.datetime.now()
     return "{0:%Y%m%d %H:%M}".format(now)
-    
+
 

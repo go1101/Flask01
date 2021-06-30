@@ -5,7 +5,7 @@ import bbs_login
 import bbs_data
 
 # Flaskのインスタンスを生成
-app.= Flask(__name__)
+app = Flask(__name__)
 app.secret_key = 'hogehoge'
 
 @app.route('/')
@@ -22,7 +22,7 @@ def index():
 def login():
     return render_template('login.html')
 
-@app.route('/try_login' methods=['POST'])
+@app.route('/try_login', methods=['POST'])
 def try_login():
     user = request.form.get('user', '')
     pw = request.form.get('pw', '')
@@ -49,7 +49,7 @@ def write():
     # [/write]フォームより書込情報を取得、無ければ['']を取得
     ta = request.form.get('ta','')
     # [/write]フォームの書込情報が無ければエラーメッセージを表示
-    if ta = '': return show_msg('書き込みが空でした')
+    if ta == '': return show_msg('書き込みが空でした')
     # 書き込みがあればユーザ名と書き込み情報を引数にして、[bbs_data.py]の[save_data_append]関数を実行する
     bss_data.save_data_append(user=bbs_login.get_user(), text=ta)
     return redirect('/')
