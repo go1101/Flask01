@@ -10,8 +10,19 @@
 </head>
 <body>
     <div class="content box">
-        <h1>{{ msg }}</h1>
-        <div><a href='/'>→トップページへ</a></div>
+        <h1>会員制の掲示板</h1>
+        <form action="/try_login" method="POST" class="pure-form pure-form-stacked">
+            <legend>ログインが必要</legend>
+            <fieldset>
+                <label for="user">ユーザー名</label>
+                <input type="text" name="user" id="user">
+                <label for="pw">パスワード</label>
+                <input type="password" name="pw" id="pw">
+                <button type="submit" class="pure-button pure-button-primary">
+                    ログイン</button>
+            </fieldset>
+        </form>
+
     </div>
 </body>
 </html>
