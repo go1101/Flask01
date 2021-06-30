@@ -10,12 +10,12 @@ app.secret_key = 'hogehoge'
 
 @app.route('/')
 def index():
-    # [bss_login.py]の[is_login()]関数より、セッション情報を保有しているかをTrue or Falseで評価する
+    # [bbs_login.py]の[is_login()]関数より、セッション情報を保有しているかをTrue or Falseで評価する
     # セッション情報が無ければ(ログインしていなければ)ログイン画面へ遷移
     if not bbs_login.is_login():
         return redirect('/login')
     # セッション情報があれば、ユーザー名と日時情報を[index.html]へ渡し、表示する
-    return render_template('index.html', user=bbs_login.get_user(), data=bbs_data.load())
+    return render_template('index.html', user=bbs_login.get_user(), data=bbs_data.load_data())
 
 # セッション情報が無ければログイン画面へ遷移する
 @app.route('/login')
@@ -27,8 +27,8 @@ def try_login():
     user = request.form.get('user', '')
     pw = request.form.get('pw', '')
 
-    # [bss_login.py]の[try_login]関数に[user]と[pw]を引数として渡し、[URSELIST]の情報と一致するか評価する
-    if bss_login.try_login(user, pw):
+    # [bbs_login.py]の[try_login]関数に[user]と[pw]を引数として渡し、[URSELIST]の情報と一致するか評価する
+    if bbs_login.try_login(user, pw):
         # ログイン認証ができると、セッション情報([)session['login'])に[user]情報を渡し、トップ画面に遷移する
         return redirect('/')
     # 認証情報が一致しなければ、エラーメッセージを[show_msg]関数(msg.html)に渡して、表示する
@@ -36,7 +36,7 @@ def try_login():
 
 @app.route('/logout')
 def logout():
-    bss_login.try_logout()
+    bbs_login.try_logout()
     return show_msg('ログアウトしました。')
 
 # 書込処理
@@ -51,7 +51,7 @@ def write():
     # [/write]フォームの書込情報が無ければエラーメッセージを表示
     if ta == '': return show_msg('書き込みが空でした')
     # 書き込みがあればユーザ名と書き込み情報を引数にして、[bbs_data.py]の[save_data_append]関数を実行する
-    bss_data.save_data_append(user=bbs_login.get_user(), text=ta)
+    bbs_data.save_data_append(user=bbs_login.get_user(), text=ta)
     return redirect('/')
 
 def show_msg(msg):
