@@ -16,7 +16,6 @@
                 <a href="/logout" class="pure-menu-link">→ログアウト</a>
             </ul>
         </div>
-    </div>
     <form action="/write" method="POST" class="pure-form pure-form-stacked">
     <textarea name="ta" rows="4" cols="60"></textarea>
     <button type="submit" class="pure-button pure-button-primary">書き込む</button>
@@ -29,11 +28,20 @@
         </div>
     {% endfor %}
 
+    <script type="text/javascript">
+    function $(id) { return document.querySelector(id) }
+    $("#menu-switch")._b = false
+    $("#menu-switch").onclick = ()->{
+        $("menu-switch")._b = !$("menu-switch")._b
+        if ($("#menu-switch")._b) {
+            $("#menu").style.display = "block"
+        } else {
+            $("#menu").style.display = "none"
+        }
+    }
     
+    </script>
     
-
-
-
-
+</div>
 </body>
 </html>
