@@ -14,9 +14,8 @@ def load_data():
     
 def save_data(data_list):
     # jsonファイルを書き込みモードで開き、引数[data_list]の内容を書き込む
-    # 
     with open(SAVE_FILE, 'wt', encoding='utf-8') as f:
-        json.dump(data_list, f)
+        json.dump(data_list, f, indent=2)
 
 # [index.html]の書き込みボタンが押されると、[save_data_append]関数が実行される
 def save_data_append(user, text):
