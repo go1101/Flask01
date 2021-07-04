@@ -20,11 +20,14 @@ def save_data(data_list):
 
 # [index.html]の書き込みボタンが押されると、[save_data_append]関数が実行される
 def save_data_append(user, text):
+    # [get_datetime_now]関数により現在日付を取得
     tm = get_datetime_now()
     data = {'name': user, 'text': text, 'date': tm}
-
+    # [load_data]関数よりjsonファイルを読み込みモードで開き、data_list変数に代入
     data_list = load_data()
+    # data_listの先頭にdata変数の情報を記載する
     data_list.insert(0, data)
+    # [save_data]関数によりdata_listの内容をjsonファイルに書き込む
     save_data(data_list)
 
 def get_datetime_now():
