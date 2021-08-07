@@ -29,6 +29,12 @@ def upload():
         return msg('パラメーターが不正です。')
     # ファイルを保存
     fs_data.save_file(upfile, meta)
+
+    # ダウンロード先表示
+    return render_template('info.html', meta=meta, mode='upload', url=request.host_url + 'download/' + meta['id'])
+
+@app.route('/download/<id>')
+def download(id):
     
 
 
