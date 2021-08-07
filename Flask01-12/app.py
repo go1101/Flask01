@@ -17,3 +17,6 @@ def upload():
     if upfile.filename == '': return msg('アップロード失敗')
     
 
+
+
+
